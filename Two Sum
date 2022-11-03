@@ -1,0 +1,8 @@
+class Solution:
+    def twoSum(self,nums:List[int],t:int)->List[int]:
+        hm={}                 #hashmap
+        for i,j in enumerate(nums):
+            if t-j in hm:
+                return [hm[t-j],i]
+            hm[j]=i
+        return
