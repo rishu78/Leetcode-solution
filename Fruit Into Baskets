@@ -1,0 +1,19 @@
+from collections import defaultdict
+
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        left = right = count = res = 0
+        fruit_count = defaultdict(int)
+        while right  < len(fruits):
+            if fruit_count[fruits[right]] == 0:
+                count += 1
+            fruit_count[fruits[right]] += 1
+            right +=1
+
+            while count > 2:
+                fruit_count[fruits[left]] -= 1
+                if fruit_count[fruits[left]] == 0:
+                    count -= 1
+                left += 1
+            res = max(res, right - left)
+        return res
